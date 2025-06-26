@@ -151,10 +151,10 @@ biPol <- function(x,var1,var2,n,color01="gold",color02="magenta3",cero.color="gr
 }
 
 # Legend for the biVariate maps ----
-biLegend <- function(g,x.axis=0.45,var.name1="var1",y.axis=0.45,var.name2="var2",title=NULL,cex.title=0.8,cex.vars=0.8,details=TRUE){
+biLegend <- function(g,x.axis=0.45,var.name1="var1",y.axis=0.45,var.name2="var2",title=NULL,cex.title=0.8,cex.vars=0.8,details=TRUE,mar=c(2.5,2.5,2.5,2.5)){
   
   # a. Set the paramters
-  par(xaxs = "i", yaxs = "i", pty = "s",mar=c(1.5,1.5,1.5,1.5),xpd=T)
+  par(xaxs = "i", yaxs = "i", pty = "s",mar=mar,xpd=T)
   
   # b. Display the color grid
   image(x=1:ncol(g), y=1:nrow(g),matrix(1:prod(dim(g)),nrow = nrow(g),ncol=ncol(g)),
@@ -171,26 +171,26 @@ biLegend <- function(g,x.axis=0.45,var.name1="var1",y.axis=0.45,var.name2="var2"
   
   # Add the arrows to describe the variables
   if(!is.null(details)){
-  usr <- par("usr")
-  
-  usr[c(1,3)]<-usr[c(1,3)] - x.axis
-  usr[c(2,4)]<-usr[c(2,4)] - y.axis
-  
-  arrows(x0 = usr[1L], y0 = usr[3L],
-         x1 = usr[1:2],y1 = usr[4:3],
-         length = 0.1,angle = 20,xpd = TRUE,
-         lwd=1
-  )
-  
-  # Add the text
-  # d. Simbols
-  text(x=usr[c(2)]+0.35,y=usr[c(3)],"+",xpd=T,font=2,cex=2) 
-  text(x=usr[c(1)],y=usr[c(4)]+0.35,"+",xpd=T,font=2,cex=2)
-  
-  # e. Variable names
-  text(x=usr[c(1:2)] %>% mean(),y=usr[c(3)]-0.4,var.name1,xpd=T,font=2,cex=cex.vars)
-  text(x=usr[c(1)]-0.4,y=usr[c(3:4)] %>% mean(),var.name2,xpd=T,font=2,cex=cex.vars,srt=90)
-    }
+    usr <- par("usr")
+    
+    usr[c(1,3)]<-usr[c(1,3)] - x.axis
+    usr[c(2,4)]<-usr[c(2,4)] - y.axis
+    
+    arrows(x0 = usr[1L], y0 = usr[3L],
+           x1 = usr[1:2],y1 = usr[4:3],
+           length = 0.1,angle = 20,xpd = TRUE,
+           lwd=1
+    )
+    
+    # Add the text
+    # d. Simbols
+    text(x=usr[c(2)]+0.35,y=usr[c(3)],"+",xpd=T,font=2,cex=2) 
+    text(x=usr[c(1)],y=usr[c(4)]+0.35,"+",xpd=T,font=2,cex=2)
+    
+    # e. Variable names
+    text(x=usr[c(1:2)] %>% mean(),y=usr[c(3)]-0.4,var.name1,xpd=T,font=2,cex=cex.vars)
+    text(x=usr[c(1)]-0.4,y=usr[c(3:4)] %>% mean(),var.name2,xpd=T,font=2,cex=cex.vars,srt=90)
   }
+}
 
 
