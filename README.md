@@ -1,8 +1,3 @@
----
-title: "BiVariate_Maps"
-output: github_document
----
-
 # 🌐 BiVariate_Maps
 
 This repository provides a set of flexible and simple R functions to generate **bivariate raster and polygon maps** using custom color palettes. Designed with ecological modeling and spatial analysis in mind, the toolkit enables users to explore and visualize spatial covariation between two continuous variables.
