@@ -58,7 +58,7 @@ The main functions can be downloaded directly from this repository alongside the
   MyRoute <- paste(getwd(),"BiVariate_Maps",sep="/")
   
   for(i in 1:nrow(file_path)){
-    write_lines(content(GET(paste(raw_route,file_path$folder[i],file_path$filename[I],sep="/"))),
+    write_lines(content(GET(paste(raw_route,file_path$folder[i],file_path$filename[i],sep="/"))),
                 paste(MyRoute,file_path$filename[i],sep="/"))
   }
 
